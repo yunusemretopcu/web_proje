@@ -20,6 +20,7 @@ namespace kuafor.mvc.Context
         public DbSet<Schedule> Schedules { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
 
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
