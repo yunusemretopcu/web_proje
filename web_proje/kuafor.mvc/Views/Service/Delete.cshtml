@@ -1,0 +1,13 @@
+﻿@model kuafor.mvc.Models.Service
+
+<h2>Hizmet Sil</h2>
+<p>Bu hizmeti silmek istediğinize emin misiniz?</p>
+<p><strong>Hizmet Adı:</strong> @Model.Name</p>
+<p><strong>Süre:</strong> @Model.Duration dakika</p>
+<p><strong>Ücret:</strong> @Model.Price ₺</p>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Sil</button>
+    <a asp-action="Index" class="btn btn-secondary">Geri</a>
+</form>

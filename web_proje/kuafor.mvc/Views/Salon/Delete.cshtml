@@ -1,0 +1,13 @@
+﻿@model kuafor.mvc.Models.Salon
+
+<h2>Salon Sil</h2>
+<p>Bu salonu silmek istediğinize emin misiniz?</p>
+<p><strong>Ad:</strong> @Model.Name</p>
+<p><strong>Adres:</strong> @Model.Address</p>
+<p><strong>Telefon:</strong> @Model.PhoneNumber</p>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Sil</button>
+    <a asp-action="Index" class="btn btn-secondary">Geri</a>
+</form>

@@ -1,0 +1,29 @@
+﻿@model IEnumerable<kuafor.mvc.Models.Appointment>
+
+<h2>Randevu Listesi</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Müşteri</th>
+            <th>Çalışan</th>
+            <th>Hizmet</th>
+            <th>Başlangıç Saati</th>
+            <th>Bitiş Saati</th>
+            <th>Durum</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var appointment in Model)
+        {
+            <tr>
+                <td>@appointment.Customer.FullName</td>
+                <td>@appointment.Employee.FullName</td>
+                <td>@appointment.Service.Name</td>
+                <td>@appointment.StartTime</td>
+                <td>@appointment.EndTime</td>
+                <td>@appointment.Status</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-action="Create" class="btn btn-primary">Yeni Randevu Oluştur</a>

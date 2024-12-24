@@ -1,9 +1,11 @@
 ﻿using kuafor.mvc.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace kuafor.mvc.Context
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
@@ -13,6 +15,7 @@ namespace kuafor.mvc.Context
         public DbSet<Salon> Salons { get; set; }
         public DbSet<Service> Services { get; set; }
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<EmployeeService> EmployeeServices { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Appointment> Appointments { get; set; }
         public DbSet<Admin> Admins { get; set; }
@@ -46,10 +49,6 @@ namespace kuafor.mvc.Context
                 .HasForeignKey(a => a.ServiceId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            // Many-to-Many Relationship: Employee ↔ Service
-            modelBuilder.Entity<Employee>()
-                .HasMany(e => e.Services)
-                .WithMany(s => s.Employees);
 
             // Seed Data (Opsiyonel)
             modelBuilder.Entity<Admin>().HasData(new Admin

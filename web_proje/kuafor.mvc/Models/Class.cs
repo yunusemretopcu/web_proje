@@ -46,8 +46,6 @@ namespace kuafor.mvc.Models
         [ForeignKey("Salon")]
         public int SalonId { get; set; }
         public Salon Salon { get; set; }
-        // Many-to-Many Navigation Property
-        public ICollection<Employee> Employees { get; set; } = new List<Employee>();
     }
 
     // Employee Model
@@ -67,7 +65,15 @@ namespace kuafor.mvc.Models
         public int SalonId { get; set; }
         public Salon Salon { get; set; }
 
-        public ICollection<Service> Services { get; set; } = new List<Service>();
+    }
+    public class EmployeeService
+    {
+        [Key]
+        public int Id { get; set; }
+        [ForeignKey("Employee")]
+        public int EmployeeId { get; set; }
+        [ForeignKey("Service")]
+        public int ServiceId { get; set; }
     }
 
     // Customer Model

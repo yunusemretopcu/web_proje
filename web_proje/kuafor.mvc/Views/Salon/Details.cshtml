@@ -1,0 +1,17 @@
+﻿@model kuafor.mvc.Models.Salon
+
+<h2>Salon Detayları</h2>
+<p><strong>Ad:</strong> @Model.Name</p>
+<p><strong>Adres:</strong> @Model.Address</p>
+<p><strong>Telefon:</strong> @Model.PhoneNumber</p>
+<p><strong>Çalışma Saatleri:</strong> @Model.WorkingHours</p>
+
+<h3>Hizmetler</h3>
+<ul>
+    @foreach (var service in Model.Services)
+    {
+        <li>@service.Name - @service.Price ₺</li>
+    }
+</ul>
+
+<a asp-action="Index" class="btn btn-secondary">Geri</a>

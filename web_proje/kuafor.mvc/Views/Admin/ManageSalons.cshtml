@@ -1,0 +1,26 @@
+﻿<h2>Salon Yönetimi</h2>
+<a asp-controller="Salon" asp-action="Create" class="btn btn-primary">Yeni Salon Ekle</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Ad</th>
+            <th>Adres</th>
+            <th>Telefon</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var salon in ViewBag.Salons as IEnumerable<kuafor.mvc.Models.Salon>)
+        {
+            <tr>
+                <td>@salon.Name</td>
+                <td>@salon.Address</td>
+                <td>@salon.PhoneNumber</td>
+                <td>
+                    <a asp-controller="Salon" asp-action="Edit" asp-route-id="@salon.Id" class="btn btn-warning">Düzenle</a>
+                    <a asp-controller="Salon" asp-action="Delete" asp-route-id="@salon.Id" class="btn btn-danger">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

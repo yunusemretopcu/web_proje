@@ -1,0 +1,26 @@
+﻿<h2>Çalışan Yönetimi</h2>
+<a asp-controller="Employee" asp-action="Create" class="btn btn-primary">Yeni Çalışan Ekle</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Ad Soyad</th>
+            <th>Uzmanlık</th>
+            <th>Salon</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var employee in ViewBag.Employees as IEnumerable<kuafor.mvc.Models.Employee>)
+        {
+            <tr>
+                <td>@employee.FullName</td>
+                <td>@employee.Expertise</td>
+                <td>@employee.Salon.Name</td>
+                <td>
+                    <a asp-controller="Employee" asp-action="Edit" asp-route-id="@employee.Id" class="btn btn-warning">Düzenle</a>
+                    <a asp-controller="Employee" asp-action="Delete" asp-route-id="@employee.Id" class="btn btn-danger">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
