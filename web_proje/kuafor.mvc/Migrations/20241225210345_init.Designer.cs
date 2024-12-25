@@ -12,7 +12,7 @@ using kuafor.mvc.Context;
 namespace kuafor.mvc.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241225205032_init")]
+    [Migration("20241225210345_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,37 +23,6 @@ namespace kuafor.mvc.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
-
-            modelBuilder.Entity("kuafor.mvc.Models.Admin", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Admins");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Email = "OgrenciNuramarasi@sakarya.edu.tr",
-                            Password = "sau"
-                        });
-                });
 
             modelBuilder.Entity("kuafor.mvc.Models.AIRecommendation", b =>
                 {

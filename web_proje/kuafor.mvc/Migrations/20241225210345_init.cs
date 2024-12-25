@@ -10,20 +10,6 @@ namespace kuafor.mvc.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Admins",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Admins", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
                 {
@@ -358,11 +344,6 @@ namespace kuafor.mvc.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
-            migrationBuilder.InsertData(
-                table: "Admins",
-                columns: new[] { "Id", "Email", "Password" },
-                values: new object[] { 1, "OgrenciNuramarasi@sakarya.edu.tr", "sau" });
-
             migrationBuilder.CreateIndex(
                 name: "IX_AIRecommendations_CustomerId",
                 table: "AIRecommendations",
@@ -445,9 +426,6 @@ namespace kuafor.mvc.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Admins");
-
             migrationBuilder.DropTable(
                 name: "AIRecommendations");
 
