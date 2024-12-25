@@ -18,7 +18,6 @@ namespace kuafor.mvc.Context
         public DbSet<EmployeeService> EmployeeServices { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Appointment> Appointments { get; set; }
-        public DbSet<Admin> Admins { get; set; }
         public DbSet<AIRecommendation> AIRecommendations { get; set; }
         public DbSet<Schedule> Schedules { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
@@ -49,14 +48,6 @@ namespace kuafor.mvc.Context
                 .HasForeignKey(a => a.ServiceId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-
-            // Seed Data (Opsiyonel)
-            modelBuilder.Entity<Admin>().HasData(new Admin
-            {
-                Id = 1,
-                Email = "OgrenciNuramarasi@sakarya.edu.tr",
-                Password = "sau"
-            });
         }
 
 

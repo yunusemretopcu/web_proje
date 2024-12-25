@@ -122,19 +122,6 @@ namespace kuafor.mvc.Models
         public string Status { get; set; }
     }
 
-    // Admin Model
-    public class Admin
-    {
-        [Key]
-        public int Id { get; set; }
-
-        [Required, MaxLength(100)]
-        public string Email { get; set; }
-
-        [Required, MaxLength(100)]
-        public string Password { get; set; }
-    }
-
     // AIRecommendation Model
     public class AIRecommendation
     {

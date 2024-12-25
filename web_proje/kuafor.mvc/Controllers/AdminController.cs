@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace kuafor.mvc.Controllers
 {
+    [Area("Admin")]
     public class AdminController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -26,21 +27,21 @@ namespace kuafor.mvc.Controllers
             return View();
         }
 
-        // POST: Admin/Login
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Login(string email, string password)
-        {
-            var admin = _context.Admins.FirstOrDefault(a => a.Email == email && a.Password == password);
-            if (admin != null)
-            {
-                // Admin girişi başarılı
-                return RedirectToAction("Index");
-            }
+        //// POST: Admin/Login
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public IActionResult Login(string email, string password)
+        //{
+        //    var admin = _context.Admins.FirstOrDefault(a => a.Email == email && a.Password == password);
+        //    if (admin != null)
+        //    {
+        //        // Admin girişi başarılı
+        //        return RedirectToAction("Index");
+        //    }
 
-            ModelState.AddModelError("", "Geçersiz kullanıcı adı veya şifre.");
-            return View();
-        }
+        //    ModelState.AddModelError("", "Geçersiz kullanıcı adı veya şifre.");
+        //    return View();
+        //}
 
         // GET: Admin/ManageSalons
         public IActionResult ManageSalons()

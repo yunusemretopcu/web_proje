@@ -12,8 +12,8 @@ using kuafor.mvc.Context;
 namespace kuafor.mvc.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241224200130_AddIdentityTables")]
-    partial class AddIdentityTables
+    [Migration("20241225205032_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
