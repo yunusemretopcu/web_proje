@@ -344,6 +344,16 @@ namespace kuafor.mvc.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[] { "3cb79f1d-eb55-4253-acd8-f32860df6714", "25e4225a-9e46-408d-a59b-59e97e93991b", "User", "USER" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[] { "d4c8d263-e9ca-4560-b1d8-697e4262eaa2", "8cc2828c-42e5-43f6-bdb2-f75e88d03de8", "Admin", "ADMIN" });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AIRecommendations_CustomerId",
                 table: "AIRecommendations",

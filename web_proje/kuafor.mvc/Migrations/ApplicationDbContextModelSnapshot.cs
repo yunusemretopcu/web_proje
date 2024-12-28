@@ -309,6 +309,22 @@ namespace kuafor.mvc.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "3cb79f1d-eb55-4253-acd8-f32860df6714",
+                            ConcurrencyStamp = "25e4225a-9e46-408d-a59b-59e97e93991b",
+                            Name = "User",
+                            NormalizedName = "USER"
+                        },
+                        new
+                        {
+                            Id = "d4c8d263-e9ca-4560-b1d8-697e4262eaa2",
+                            ConcurrencyStamp = "8cc2828c-42e5-43f6-bdb2-f75e88d03de8",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

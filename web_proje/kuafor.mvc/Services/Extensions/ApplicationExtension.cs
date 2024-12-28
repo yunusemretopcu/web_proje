@@ -45,10 +45,6 @@ namespace kuafor.mvc.Services.Extensions
                     UserName = "Admin"
                 };
 
-
-
-
-
                 var result = await userManager.CreateAsync(user, adminPassword);
                 if (!result.Succeeded)
                     throw new Exception("Admin user could not created.");

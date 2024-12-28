@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 namespace kuafor.mvc.Context
 {
@@ -47,6 +48,8 @@ namespace kuafor.mvc.Context
                 .WithMany()
                 .HasForeignKey(a => a.ServiceId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
         }
 

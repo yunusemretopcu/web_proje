@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace kuafor.mvc.Services.Extensions
 {
@@ -33,7 +34,13 @@ namespace kuafor.mvc.Services.Extensions
             })
             .AddEntityFrameworkStores<ApplicationDbContext>();
         }
-
+        public static void ConfigureRole(EntityTypeBuilder<IdentityRole> builder)
+        {
+            builder.HasData(
+                new IdentityRole() { Name = "User", NormalizedName = "USER" },
+                new IdentityRole() { Name = "Admin", NormalizedName = "ADMIN" }
+            );
+        }
 
         public static void ConfigureRepositoryRegisteration(this IServiceCollection services)
         {
