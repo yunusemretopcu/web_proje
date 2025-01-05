@@ -1,10 +1,11 @@
-﻿using kuafor.mvc.Models;
-using kuafor.mvc.Context;
+﻿using kuafor.mvc.Context;
+using kuafor.mvc.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace kuafor.mvc.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class EmployeeController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -14,13 +15,39 @@ namespace kuafor.mvc.Controllers
             _context = context;
         }
 
-        // GET: Employee
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var employees = await _context.Employees.Include(e => e.Salon).ToListAsync();
+            var employees = _context.Employees.ToList();
             return View(employees);
         }
 
-        // CRUD işlemleri diğer controller yapısına benzer şekilde devam edecektir.
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Employee employee)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Employees.Add(employee);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(employee);
+        }
+
+        public IActionResult Delete(int id)
+        {
+            var employee = _context.Employees.Find(id);
+            if (employee != null)
+            {
+                _context.Employees.Remove(employee);
+                _context.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
     }
 }

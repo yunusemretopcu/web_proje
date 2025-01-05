@@ -1,0 +1,14 @@
+﻿@using kuafor.mvc.Models
+@model Appointment
+<h2>Randevu Al</h2>
+<form asp-action="Create" method="post">
+    <div class="mb-3"
+        <label class="form-label">Çalışan</label>
+        <select asp-for="EmployeeId" asp-items="@(new SelectList(ViewBag.Employees, "Id", "Name"))"></select>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Tarih</label>
+        <input class="form-control" asp-for="AppointmentTime" type="datetime-local" />
+    </div>
+    <button type="submit">Randevu Al</button>
+</form>

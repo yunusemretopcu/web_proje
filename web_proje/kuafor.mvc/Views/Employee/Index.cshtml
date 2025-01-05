@@ -1,28 +1,33 @@
-﻿@model IEnumerable<kuafor.mvc.Models.Employee>
-
+﻿@using kuafor.mvc.Models
+@model IEnumerable<Employee>
 <h2>Çalışan Listesi</h2>
 <table class="table">
     <thead>
         <tr>
-            <th>Ad Soyad</th>
-            <th>Uzmanlık</th>
-            <th>Salon</th>
-            <th>İşlemler</th>
+            <th scope="col">#</th>
+            <th scope="col">İsim</th>
+            <th scope="col">Uzmanlık</th>
+            <th scope="col">Ücret</th>
+            <th scope="col">#</th>
         </tr>
     </thead>
     <tbody>
+        @{
+            int index = 1;
+        }
         @foreach (var employee in Model)
         {
             <tr>
-                <td>@employee.FullName</td>
-                <td>@employee.Expertise</td>
-                <td>@employee.Salon.Name</td>
+                <th scope="row">@index</th>
+                <td>@employee.Name</td>
+                <td>@employee.Specialty</td>
+                <td>@employee.Price</td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@employee.Id" class="btn btn-warning">Düzenle</a>
-                    <a asp-action="Delete" asp-route-id="@employee.Id" class="btn btn-danger">Sil</a>
+                    <a asp-action="Delete" asp-route-id="@employee.Id">Delete</a>
                 </td>
             </tr>
+            index++;
         }
     </tbody>
 </table>
-<a asp-action="Create" class="btn btn-primary">Yeni Çalışan Ekle</a>
+<a class="btn btn-success" asp-action="Create">Yeni Çalışan Ekle</a>

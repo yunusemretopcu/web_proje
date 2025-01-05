@@ -43,9 +43,9 @@ namespace kuafor.mvc.Controllers
                     {
                         bool isInRole = await _userManager.IsInRoleAsync(user, "Admin");
                         if (isInRole)
-                            return Redirect("/" + "Admin");
+                            return Redirect("/Employee/Index");
                         else
-                            return Redirect("/" + "User");
+                            return Redirect("/Appointment/Index");
                     }
                 }
                 ModelState.AddModelError("Error", "Invalid username or passwoord.");

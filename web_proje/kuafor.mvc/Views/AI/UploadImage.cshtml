@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Upload Image for AI Suggestion";
+}
+<h2>Upload Image for AI Suggestion</h2>
+<form asp-action="UploadImage" method="post" enctype="multipart/form-data">
+    <div>
+        <label for="uploadedFile">Choose an image:</label>
+        <input type="file" name="uploadedFile" />
+    </div>
+    <button type="submit">Submit</button>
+</form>
+
+@if (ViewBag.AISuggestion != null)
+{
+    <h3>AI Suggestion:</h3>
+    <p>@ViewBag.AISuggestion</p>
+}

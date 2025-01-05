@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using kuafor.api.Models;
+using kuafor.mvc.Models;
 
 namespace kuafor.api.Context
 {
@@ -10,8 +10,8 @@ namespace kuafor.api.Context
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
-        public DbSet<Customer> Customers { get; set; }
-        public DbSet<AIRecommendation> AIRecommendations { get; set; }
+        public DbSet<Appointment> Appointments { get; set; }
+        public DbSet<Employee> Employees { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

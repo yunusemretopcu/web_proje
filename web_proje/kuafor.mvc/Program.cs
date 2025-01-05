@@ -13,6 +13,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+builder.Services.AddHttpClient();
+
 builder.Services.ConfigureIdentity();
 
 builder.Services.ConfigureRepositoryRegisteration();
@@ -40,15 +42,11 @@ app.UseStaticFiles();
 
 app.UseRouting();
 app.ConfigureDefaultAdminUser();
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.UseEndpoints(endpoints =>
 {
-    endpoints.MapAreaControllerRoute(
-        name: "Admin",
-        areaName: "Admin",
-        pattern: "Admin/{controller=Admin}/{action=Index}/{id?}"
-    );
     endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
 
 });

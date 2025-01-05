@@ -5,7 +5,7 @@ VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "kuafor.mvc", "kuafor.mvc\kuafor.mvc.csproj", "{63206FD4-7DB0-440B-8E51-00B583C57407}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kuafor.api", "kuafor.api\kuafor.api.csproj", "{F41C32B3-337C-443F-A21B-B4C713C72A40}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "kuafor.api", "kuafor.api\kuafor.api.csproj", "{F41C32B3-337C-443F-A21B-B4C713C72A40}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

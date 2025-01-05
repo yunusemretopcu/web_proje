@@ -22,41 +22,23 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Anasayfa</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Gizlilik</a>
-                        </li>
 
                         <!-- Admin Menu -->
                         @if (User.IsInRole("Admin"))
                         {
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle text-dark" href="#" id="adminMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Admin Paneli
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="adminMenu">
-                                    <li><a class="dropdown-item" asp-controller="Admin" asp-action="ManageSalons">Salon Yönetimi</a></li>
-                                    <li><a class="dropdown-item" asp-controller="Admin" asp-action="ManageEmployees">Çalışan Yönetimi</a></li>
-                                    <li><a class="dropdown-item" asp-controller="Admin" asp-action="ManageAppointments">Randevu Yönetimi</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item text-danger" asp-controller="Admin" asp-action="Logout">Çıkış Yap</a></li>
-                                </ul>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Employee" asp-action="Index">Çalışan Yönetimi</a>
+                            </li>
+                            <li>
+                                <a class="nav-link text-dark" asp-controller="Appointment" asp-action="GetAppointments">Randevular</a>
                             </li>
                         }
 
                         <!-- User Menu -->
-                        @if (User.IsInRole("User"))
+                        @if (User.IsInRole("User") && !User.IsInRole("Admin"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Salon" asp-action="Index">Salonlar</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Appointment" asp-action="Index">Randevular</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Service" asp-action="Index">Hizmetler</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Customer" asp-action="Index">Müşteriler</a>
+                                <a class="nav-link text-dark" asp-controller="Appointment" asp-action="Index">Randevu Al</a>
                             </li>
                         }
                     </ul>

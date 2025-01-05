@@ -1,29 +1,31 @@
-﻿@model IEnumerable<kuafor.mvc.Models.Appointment>
-
-<h2>Randevu Listesi</h2>
+﻿@using kuafor.mvc.Models
+@model IEnumerable<Appointment>
+<h2>Randevular</h2>
 <table class="table">
     <thead>
         <tr>
-            <th>Müşteri</th>
-            <th>Çalışan</th>
-            <th>Hizmet</th>
-            <th>Başlangıç Saati</th>
-            <th>Bitiş Saati</th>
-            <th>Durum</th>
+            <th scope="col">#</th>
+            <th scope="col">Çalışan</th>
+            <th scope="col">Tarih</th>
+            <th scope="col">#</th>
         </tr>
     </thead>
     <tbody>
+        @{
+            int index = 1;
+        }
         @foreach (var appointment in Model)
         {
             <tr>
-                <td>@appointment.Customer.FullName</td>
-                <td>@appointment.Employee.FullName</td>
-                <td>@appointment.Service.Name</td>
-                <td>@appointment.StartTime</td>
-                <td>@appointment.EndTime</td>
-                <td>@appointment.Status</td>
+                <th scope="row">@index</th>
+                <td>@appointment.Employee.Name</td>
+                <td>@appointment.AppointmentTime</td>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@appointment.Id">Sil</a>
+                </td>
             </tr>
+            index++;
         }
     </tbody>
 </table>
-<a asp-action="Create" class="btn btn-primary">Yeni Randevu Oluştur</a>
+<a class="btn btn-success" asp-action="Create">Randevu Al</a>
